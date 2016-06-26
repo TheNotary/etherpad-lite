@@ -828,6 +828,18 @@ exports.updatePadClients = function(pad, callback)
     }
   }
 
+  // debugger;
+  // MY HACKS FOR writing a file
+  var fs = require('fs');
+  fs.writeFile(appRoot + "/pads/" + pad.id, pad.atext.text, function(err) {
+    if(err) {
+      fs.mkdir(appRoot + "/pads");
+      console.log(err);
+    }
+  });
+
+
+
   if(roomClients.length==0)
     return callback();
 
